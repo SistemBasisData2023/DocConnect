@@ -26,7 +26,7 @@ const patientControl = {
       const salt = await bcrypt.genSalt(8);
       const byPassword = await bcrypt.hash(password, salt);
 
-      const patient_id = crypto.randomUUID();
+      const patient_id = Date.now().toString();
 
       const patientRegisterQuery = `INSERT INTO patients (patient_id, name, email, number, address, gender, password) VALUES ($1, $2, $3, $4, $5, $6, $7)`;
       const patientRegisterVal = [patient_id, name, email, number, address, gender, byPassword];

@@ -11,6 +11,9 @@ const patientRoute = require('../backend/Routes/patientRoute');
 
 const app = express();
 
+app.use(bodyParser.json()); // for parsing application/json
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // Connect to database
 pool.connect((err) =>{
   if(err){
