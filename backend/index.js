@@ -11,7 +11,9 @@ const patientRoute = require('../backend/Routes/patientRoute');
 
 const app = express();
 
-app.use(bodyParser.json()); // for parsing application/json
+// Middleware
+app.use(cors());
+app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Connect to database
@@ -23,11 +25,10 @@ pool.connect((err) =>{
   console.log('Database connected');
 });
 
+// Initiating routes
 app.use('/patient', patientRoute);
 
-
-
-// Connect to port
+// Connect to port and server
 const port = process.env.PORT || 5000
 app.listen(port , () => {
   console.log(`Server running on port ${port}`)
