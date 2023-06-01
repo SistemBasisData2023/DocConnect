@@ -5,6 +5,7 @@ const pool = require('../db');
 
 const patientControl = {
 
+  // Patient registration
   patientSignUp: async (req, res) => {
     const { 
       name, 
@@ -21,7 +22,7 @@ const patientControl = {
       ]);
 
       if (patientCheck.rows.length > 0) {
-        return res.status(401).json('Patient already registered');
+        return res.status(401).json('Patient is already registered');
       }
 
       const salt = await bcrypt.genSalt(8);
@@ -34,7 +35,7 @@ const patientControl = {
 
       await pool.query(patientRegisterQuery, patientRegisterVal);
   
-      res.status(201).json({ message: 'Patient registration successfull'});
+      res.status(201).json({ message: 'Patient registration successful'});
 
     } catch (err) {
       console.error(err.message);
@@ -42,6 +43,7 @@ const patientControl = {
     }
   },
 
+  // Patient log in
   patientSignIn: async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -57,7 +59,7 @@ const patientControl = {
       if (patientSigned.rows.length > 0) {
         bcrypt.compare(password, patientSigned.rows[0].password, (err, compareResult) => {
           if(compareResult == true) {
-            res.send(true);
+            res.send(`Welcome back ${patientSigned.rows[0].name}`);
             console.log('Patient login successful');
           }
         })
@@ -69,13 +71,14 @@ const patientControl = {
     }
   },
 
+  // Delete patient account
   patientDelete: async (req, res) => {
     try {
-      const { patient_id } = req.body;
+      const { patient_id } = req.params;
+      console.log(req.params);
       const patientDeleteCheck = await pool.query('SELECT * FROM patients WHERE patient_id = $1', [
         patient_id
       ]);
-      console.log(patient_id);
 
       if (patientDeleteCheck.rowCount === 0) {
         return res.status(404).json('Patient not found');
@@ -91,8 +94,12 @@ const patientControl = {
       console.error(err.message);
       res.status(500).send('Server error');
     }
+  },
+
+  bookAppointment: async(req, res) => {
+
   }
-  
+
 };
 
 module.exports = patientControl;

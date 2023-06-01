@@ -5,6 +5,6 @@ const patientControl = require('../Controllers/patientControl');
 
 router.post('/register', patientControl.patientSignUp);
 router.post('/login', patientControl.patientSignIn);
-router.delete('/delete', patientControl.patientDelete);
+router.delete('/:patient_id', patientControl.patientDelete);
 
 module.exports = router;

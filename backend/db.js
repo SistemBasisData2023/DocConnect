@@ -1,13 +1,18 @@
-const Pool = require('pg').Pool;
+const { Pool } = require("pg");
+const dotenv = require("dotenv")
 
-// Connect to database
-const pool = new Pool({
-  user: 'suhailialeeee',
-  host: 'ep-mute-scene-183386.ap-southeast-1.aws.neon.tech',
-  database: 'docconnect',
-  password: '2MyFK8NibXAV',
-  port: 5432,
-  ssl: require,
-});
+// dotenv
+dotenv.config();
+const { PGHOST, PGDATABASE, PGUSER, PGPASSWORD, PGPORT } = process.env;
 
+const dbConfig = {
+  user: PGUSER,
+  host: PGHOST,
+  database: PGDATABASE,
+  port: Number(PGPORT),
+  password: PGPASSWORD,
+  ssl: true,
+};
+
+const pool = new Pool(dbConfig);
 module.exports = pool;

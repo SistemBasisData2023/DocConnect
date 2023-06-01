@@ -17,5 +17,3 @@ gender text NOT NULL,
 department text NOT NULL,
 password text NOT NULL
 );
-
-

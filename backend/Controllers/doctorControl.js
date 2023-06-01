@@ -34,14 +34,15 @@ const doctorControl = {
 
       await pool.query(doctorRegisterQuery, doctorRegisterVal);
   
-      res.status(201).json({ message: 'Doctor registration successfull'});
+      res.status(200).json({ message: 'Doctor registration successfull'});
 
     } catch (err) {
       console.error(err.message);
       res.status(500).send('Server error');
     }
   },
-  //Doctor log in
+
+  // Doctor log in
   doctorSignIn: async (req, res) => {
     const { email, password } = req.body;
     try {
@@ -51,13 +52,13 @@ const doctorControl = {
       
       if (doctorSigned.rows.length === 0 || 
         doctorSigned.rows.length < 0) {
-        return res.status(401).json('Doctor not found');
+        return res.status(400).json('Doctor not found');
       }
 
       if (doctorSigned.rows.length > 0) {
         bcrypt.compare(password, doctorSigned.rows[0].password, (err, compareResult) => {
           if(compareResult == true) {
-            res.send('Welcome back doctor');
+            res.send(`Welcome back doctor ${doctorSigned.rows[0].name}`);
             console.log('Doctor login successful');
           }
         })
@@ -69,13 +70,14 @@ const doctorControl = {
     }
   },
 
+  // Delete doctor account
   doctorDelete: async (req, res) => {
     try {
-      const { doctor_id } = req.body;
+      const { doctor_id } = req.params;
+      console.log(req.params);
       const doctorDeleteCheck = await pool.query('SELECT * FROM doctors WHERE doctor_id = $1', [
         doctor_id
       ]);
-      console.log(doctor_id);
 
       if (doctorDeleteCheck.rowCount === 0) {
         return res.status(404).json('Doctor not found');
@@ -91,7 +93,9 @@ const doctorControl = {
       console.error(err.message);
       res.status(500).send('Server error');
     }
-  }
+  },
+
+  
 }
 
 module.exports = doctorControl;
