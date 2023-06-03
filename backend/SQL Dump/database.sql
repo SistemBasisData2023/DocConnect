@@ -52,6 +52,8 @@ department_id VARCHAR(36) NOT NULL PRIMARY KEY,
 department_name text NOT NULL
 );
 
+
+
 /*-----------------------*/
 /*      ROUTE PATIENT    */
 /*-----------------------*/
