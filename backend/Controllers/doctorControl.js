@@ -2,39 +2,44 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser');
 const pool = require('../db');
+const { uuid } = require('uuidv4');
+const crypto = require('crypto');
+
 
 const doctorControl = {
+
   // Doctor registration
   doctorSignUp: async (req, res) => {
     const { 
       name,
+      nip,
       email,
       number, 
       gender, 
-      department,  
+      department_id,  
       password } = req.body;
     console.log(req.body);
 
     try {
-      const doctorCheck = await pool.query('SELECT * FROM doctors WHERE email = $1', [
-        email
-      ]);
-
-      if (doctorCheck.rows.length > 0) {
-        return res.status(401).json('Doctor is already registered');
-      }
-
+      
       const salt = await bcrypt.genSalt(8);
       const byPassword = await bcrypt.hash(password, salt);
 
-      const doctor_id = Date.now().toString();
+      const doctor_id = crypto.randomUUID();
+      const account_id = crypto.randomUUID();
 
-      const doctorRegisterQuery = `INSERT INTO doctors (doctor_id, name, email, number, gender, department, password) VALUES ($1, $2, $3, $4, $5, $6, $7)`;
-      const doctorRegisterVal = [doctor_id, name, email, number, gender, department, byPassword];
+      const acoountRegisterQuery = `INSERT INTO account (account_id, email, password, role) VALUES ($1, $2, $3, 'DOCTOR')`;
+      const accountRegisterVal = [account_id, email, byPassword];
+
+      await pool.query(acoountRegisterQuery, accountRegisterVal);
+
+
+      const doctorRegisterQuery = `INSERT INTO doctors (doctor_id, account_id, department_id, name, nip, number, gender) VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+      const doctorRegisterVal = [doctor_id, account_id, department_id, name, nip, number, gender];
 
       await pool.query(doctorRegisterQuery, doctorRegisterVal);
   
-      res.status(200).json({ message: 'Doctor registration successfull'});
+      res.status(200).json({ message: 'Doctor registration successful' });
 
     } catch (err) {
       console.error(err.message);
@@ -46,7 +51,7 @@ const doctorControl = {
   doctorSignIn: async (req, res) => {
     const { email, password } = req.body;
     try {
-      const doctorSigned = await pool.query(`SELECT * FROM doctors WHERE email = $1`, [
+      const doctorSigned = await pool.query(`SELECT * FROM account WHERE email = $1`, [
         email
       ]);
       
@@ -56,10 +61,17 @@ const doctorControl = {
       }
 
       if (doctorSigned.rows.length > 0) {
-        bcrypt.compare(password, doctorSigned.rows[0].password, (err, compareResult) => {
+        bcrypt.compare(password, doctorSigned.rows[0].password, async (err, compareResult) => {
           if(compareResult == true) {
-            res.send(`Welcome back doctor ${doctorSigned.rows[0].name}`);
+            const testDoctor = await pool.query(`SELECT * FROM doctors WHERE account_id = $1`, [doctorSigned.rows[0].account_id]);
+            const doctorResult = testDoctor.rows[0];
+            const result = {};
+            result[`message`] = `Welcome back ` + doctorResult.name;
+            result[`data`] = doctorResult;
+            res.status(200).json(result);
             console.log('Doctor login successful');
+          } else {
+            return res.status(401).json('Password did not match');
           }
         })
       }
@@ -70,30 +82,23 @@ const doctorControl = {
     }
   },
 
-  // Delete doctor account
-  doctorDelete: async (req, res) => {
+  makeSchedule: async (req, res) => {
+    const { doctor_id, date, time } = req.body;
+    const schedule_id = crypto.randomUUID();
     try {
-      const { doctor_id } = req.params;
-      console.log(req.params);
-      const doctorDeleteCheck = await pool.query('SELECT * FROM doctors WHERE doctor_id = $1', [
-        doctor_id
-      ]);
-
-      if (doctorDeleteCheck.rowCount === 0) {
-        return res.status(404).json('Doctor not found');
-      }
-
-      const doctorDeleteQuery = 'DELETE FROM doctors WHERE doctor_id = $1';
-      const doctorDeleteVal = [doctor_id];
-      await pool.query(doctorDeleteQuery, doctorDeleteVal);
-
-      res.status(200).json({ message: 'Doctor account deletion successful'});
-
+      const schedule = await pool.query(`INSERT INTO schedule (schedule_id, doctor_id, date, time) VALUES ($1, $2, $3, $4)`, 
+      [schedule_id, doctor_id, date, time]);
+      const schedResult = schedule.rows[0];
+      const result = {};
+      result[`message`] = `Schedule added`;
+      result[`data`] = schedResult;
+      res.status(200).json(result);
+      console.log(schedule);
     } catch (error) {
-      console.error(err.message);
+      console.log(error);
       res.status(500).send('Server error');
     }
-  },
+  }
 
   
 }
