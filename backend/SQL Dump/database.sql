@@ -93,6 +93,24 @@ INSERT INTO doctors (name, nip, number, gender, department, gender) VALUES (name
 INSERT INTO department (department_name) VALUES (department_name);
 
 INSERT INTO department (department_id, department_name) VALUES ('1', 'Organs');
+INSERT INTO department (department_id, department_name) VALUES (2, 'Pulmonologist'),
+(3, 'Neurologist'),
+(4, 'Gastroenterologist'),
+(5, 'Oncologist'),
+(6, 'Orthopedic Surgeon'),
+(7, 'Nephrologist'),
+(8, 'Endocrinologist'),
+(9, 'Dermatologist'),
+(10, 'Ophthalmologist'),
+(11, 'Psychiatrist'),
+(12, 'Obstetrician/Gynecologist'),
+(13, 'Urologist'),
+(14, 'Rheumatologist'),
+(15, 'Pediatrician'),
+(16, 'ENT Specialist'),
+(17, 'Radiologist');
+
+
 
 /*-----------------------*/
 /*      ROUTE DOCTOR     */
@@ -112,3 +130,4 @@ UPDATE department SET status = 'REJECTED';
 
 
 ALTER TABLE doctors DROP column department;
+ALTER TABLE department ALTER COLUMN department_id TYPE SERIAL;

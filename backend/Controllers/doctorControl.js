@@ -21,18 +21,20 @@ const doctorControl = {
     console.log(req.body);
 
     try {
-      
+
       const salt = await bcrypt.genSalt(8);
       const byPassword = await bcrypt.hash(password, salt);
 
       const doctor_id = crypto.randomUUID();
       const account_id = crypto.randomUUID();
 
+      // Insert the data to account table with doctor role
       const acoountRegisterQuery = `INSERT INTO account (account_id, email, password, role) VALUES ($1, $2, $3, 'DOCTOR')`;
       const accountRegisterVal = [account_id, email, byPassword];
 
       await pool.query(acoountRegisterQuery, accountRegisterVal);
 
+      // Insert the data to doctor table
       const doctorRegisterQuery = `INSERT INTO doctors (doctor_id, account_id, department_id, name, nip, number, gender) VALUES ($1, $2, $3, $4, $5, $6, $7)`;
       const doctorRegisterVal = [doctor_id, account_id, department_id, name, nip, number, gender];
 
@@ -54,11 +56,13 @@ const doctorControl = {
         email
       ]);
       
+      // Check if the email exists
       if (doctorSigned.rows.length === 0 || 
         doctorSigned.rows.length < 0) {
         return res.status(400).json('Doctor not found');
       }
 
+      // Then compare the password
       if (doctorSigned.rows.length > 0) {
         bcrypt.compare(password, doctorSigned.rows[0].password, async (err, compareResult) => {
           if(compareResult == true) {
@@ -116,6 +120,6 @@ const doctorControl = {
   }
 
   
-}
+};
 
 module.exports = doctorControl;

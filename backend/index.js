@@ -6,19 +6,17 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const pool = require('./db');
 
-
 // Routes used
+const adminRoute = require('../backend/Routes/adminRoute');
 const patientRoute = require('../backend/Routes/patientRoute');
 const doctorRoute = require('../backend/Routes/doctorRoute');
 
 const app = express();
 
-
 // Middleware
 app.use(cors());
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
-
 
 // Connect to database
 pool.connect((err) =>{
@@ -29,11 +27,10 @@ pool.connect((err) =>{
   console.log('Database connected');
 });
 
-
-// Initiating routes
+// Executing routes
+app.use('/admin', adminRoute);
 app.use('/patient', patientRoute);
 app.use('/doctor', doctorRoute);
-
 
 // Connect to port and server
 const port = process.env.PORT || 5000
