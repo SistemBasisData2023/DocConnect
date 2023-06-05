@@ -5,7 +5,8 @@ const adminControl = require('../Controllers/adminControl');
 
 router.post('/add', adminControl.addDepartment);
 router.get('/show', adminControl.showDepartment);
-router.delete('/delete', adminControl.deleteDepartment);
+router.put('/:department_id', adminControl.updateDepartment);
+router.delete('/:department_id', adminControl.deleteDepartment);
 
 module.exports = router;
 

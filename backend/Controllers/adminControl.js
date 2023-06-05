@@ -64,8 +64,30 @@ const adminControl = {
     
   },
 
+  updateDepartment: async (req, res) => {
+    const { department_id } = req.params;
+    const { department_name } = req.body;
+
+    try {
+      const upDepart = await pool.query(`UPDATE department SET department_name = $1 WHERE department_id = $2 RETURNING *`, [
+        department_name, department_id
+      ]);
+
+      if (upDepart.rows.length === 0 || upDepart.rows.length < 0) return res.status(400).json('Department data not found');
+
+      const result = {};
+      result[`message`] = `Updated department data: `;
+      result[`data`] = upDepart;
+      res.status(200).json(result);
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  },
+
   deleteDepartment: async (req, res) => {
-    const { department_id } = req.body;
+    const { department_id } = req.params;
 
     try {
       const deleteDepart = await pool.query(`DELETE FROM department WHERE department_id = $1 RETURNING *`, [
