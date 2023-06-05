@@ -7,7 +7,6 @@ const crypto = require('crypto');
 
 
 const patientControl = {
-
   // Patient registration
   patientSignUp: async (req, res) => {
     const { 
@@ -79,12 +78,53 @@ const patientControl = {
     }
   },
 
+  // Make appointment
   bookAppointment: async(req, res) => {
+    const {
+      patient_id,
+      schedule_id,
+      description, } = req.body
     
+    try {
 
-  }
+      const appointment_id = crypto.randomUUID();
+      const bookQuery = await pool.query (`INSERT INTO appointment (appointment_id, patient_id, schedule_id, description, status, appointment_date) VALUES ($1, $2, $3, $4, $5, current_date) RETURNING *`, [
+        appointment_id, patient_id, schedule_id, description, 'PENDING'
+      ]);
+
+      const result = {};
+      result[`message`] = `Appointment added: `;
+      result[`data`] = bookQuery;
+      res.status(200).json(result);
+      
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error'); 
+    }
+
+  },
+
+  
+  lookAppointment: async (req, res) => {
+    const { patient_id } = req.params;
+    try {
+      const showQuery = await pool.query('SELECT * FROM appointment WHERE patient_id = $1', [
+        patient_id
+      ]);
+
+      const result = {};
+      result[`message`] = `Appointment shown: `;
+      result[`data`] = showQuery;
+      res.status(200).json(result);
+      
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error'); 
+      
+    }
+
+  },
 
 };
 
 module.exports = patientControl;
-

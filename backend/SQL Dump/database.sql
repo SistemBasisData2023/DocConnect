@@ -52,8 +52,6 @@ department_id VARCHAR(36) NOT NULL PRIMARY KEY,
 department_name text NOT NULL
 );
 
-
-
 /*-----------------------*/
 /*      ROUTE PATIENT    */
 /*-----------------------*/
@@ -111,7 +109,6 @@ INSERT INTO department (department_id, department_name) VALUES (2, 'Pulmonologis
 (17, 'Radiologist');
 
 
-
 /*-----------------------*/
 /*      ROUTE DOCTOR     */
 /*-----------------------*/
@@ -131,3 +128,7 @@ UPDATE department SET status = 'REJECTED';
 
 ALTER TABLE doctors DROP column department;
 ALTER TABLE department ALTER COLUMN department_id TYPE SERIAL;
+
+
+
+SELECT * FROM doctors LEFT JOIN department where doctors.department_id = department.department_id;

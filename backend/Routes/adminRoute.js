@@ -9,4 +9,3 @@ router.put('/:department_id', adminControl.updateDepartment);
 router.delete('/:department_id', adminControl.deleteDepartment);
 
 module.exports = router;
-

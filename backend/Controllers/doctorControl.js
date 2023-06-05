@@ -7,7 +7,6 @@ const crypto = require('crypto');
 
 
 const doctorControl = {
-
   // Doctor registration
   doctorSignUp: async (req, res) => {
     const { 
@@ -21,6 +20,11 @@ const doctorControl = {
     console.log(req.body);
 
     try {
+      const checkDoctor = await pool.query(`SELECT * FROM doctors WHERE nip = $1`, [
+        nip
+      ]);
+
+      if (checkDoctor.rows.length > 0) return res.status(400).json('Account already registered');
 
       const salt = await bcrypt.genSalt(8);
       const byPassword = await bcrypt.hash(password, salt);
@@ -117,9 +121,61 @@ const doctorControl = {
       console.log(error);
       res.status(500).send('Server error');
     }
+  },
+
+  showAppointment: async (req, res) => {
+
+    const { doctor_id } = req.params;
+    console.log(doctor_id);
+    //const { schedule_id } = req.body;
+
+    try {
+      const showApp = await pool.query(`
+      SELECT a.appointment_id, p."name" AS patient_name, s."date", s."time", a.description, a.status FROM appointment a 
+      JOIN schedule s ON a.schedule_id = s.schedule_id 
+      JOIN patients p ON p.patient_id = a.patient_id 
+      WHERE s.doctor_id = $1`, 
+      [
+        doctor_id
+      ]);
+
+      if (showApp.rows.length === 0) return res.status(400).json('Appointment not found');
+
+      const result = {};
+      result[`message`] = `All appointments:`;
+      result[`data`] = showApp.rows;
+      res.status(200).json(result);
+      
+    } catch (err) {
+      console.log(err);
+      res.status(500).send('Server error');
+      
+    }
+  },
+
+  statusAppointment: async (req, res) => {
+
+    const { status, appointment_id } = req.body;
+
+    try {
+      const statusApp = await pool.query (`UPDATE appointment SET status = $1 WHERE appointment_id = $2 RETURNING *`, [
+        status, appointment_id
+      ]);
+
+      if (statusApp.rows.length === 0) return res.status(400).json('Appointment not found');
+
+      const result = {};
+      result[`message`] = `Appointments updated:`;
+      result[`data`] = statusApp.rows;
+      res.status(200).json(result);
+      
+    } catch (err) {
+      console.log(err);
+      res.status(500).send('Server error');
+
+    }
   }
 
-  
 };
 
 module.exports = doctorControl;

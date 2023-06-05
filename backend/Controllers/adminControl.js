@@ -33,7 +33,7 @@ const adminControl = {
       const departRes = addDepartQuery.rows[0];
       const result = {};
       result[`message`] = `Department added`;
-      result[`data`] = departRes;
+      result[`data`] = departRes.rows;
       res.status(201).json(result);  
     
     } catch (err) {
@@ -47,14 +47,13 @@ const adminControl = {
     const {} = req.body;
     
     try {
-
       // Show all departments
       const showDepartQuery = `SELECT * FROM department`;
       const showDepartResult = await pool.query(showDepartQuery);
 
       const result = {};
-      result[`message`] = `Schedule Shown`;
-      result[`data`] = showDepartResult;
+      result[`message`] = `Department Shown`;
+      result[`data`] = showDepartResult.rows;
       res.status(200).json(result);
 
     } catch (err) {
@@ -73,11 +72,13 @@ const adminControl = {
         department_name, department_id
       ]);
 
+      // Check if the data exists
       if (upDepart.rows.length === 0 || upDepart.rows.length < 0) return res.status(400).json('Department data not found');
 
+      // If exists, update the department name
       const result = {};
       result[`message`] = `Updated department data: `;
-      result[`data`] = upDepart;
+      result[`data`] = upDepart.rows;
       res.status(200).json(result);
 
     } catch (err) {
@@ -103,7 +104,7 @@ const adminControl = {
       // If exists, delete the data
       const result = {};
       result[`message`] = `Department deleted: `;
-      result[`data`] = deleteDepart;
+      result[`data`] = deleteDepart.rows;
       res.status(200).json(result);
 
     } catch (err) {
