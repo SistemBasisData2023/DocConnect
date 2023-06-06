@@ -7,6 +7,45 @@ const crypto = require('crypto');
 
 const adminControl = {
 
+  showAllDoctors: async (req, res) => {
+    try {
+      const {} = req.body;
+
+      const showDoc = await pool.query(`SELECT * FROM doctors`, []);
+
+      if (showDoc.rows.length === 0) return res.status(201).json('Empty lists'); 
+
+      const result = {};
+      result[`message`] = `All doctors: `;
+      result[`data`] = showDoc.rows;
+      res.status(201).json(result);
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  
+  },
+
+  showAllPatients: async (req, res) => {
+    try {
+      const {} = req.body;
+
+      const showPatient = await pool.query(`SELECT * FROM patients`, []);
+
+      if (showPatient.rows.length === 0) return res.status(201).json('Empty lists');
+      const result = {};
+      result[`message`] = `All patients: `;
+      result[`data`] = showPatient.rows;
+      res.status(201).json(result);
+
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server error');
+    }
+  
+  },
+
   addDepartment: async (req, res) => {
     const { 
       department_id, 

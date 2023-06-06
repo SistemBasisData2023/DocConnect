@@ -20,6 +20,7 @@ const doctorControl = {
     console.log(req.body);
 
     try {
+      // Check if 
       const checkDoctor = await pool.query(`SELECT * FROM doctors WHERE nip = $1`, [
         nip
       ]);

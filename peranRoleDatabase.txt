@@ -1,6 +1,6 @@
 > Dokter
 
-1. Login //
+1. Register dan Login //
 2. Bikin jadwal //
 3. Lihat appointment -> approval* //
 
@@ -9,15 +9,13 @@
 
 1. Registrasi pasien //
 2. Login //
-3. Lihat schedule //
 4. Bikin appointment //
 5. Review appointment //
 
 
 > Admin
 
-1. Register dokter //
-2. Manage department //
+1. Manage department //
 
 PGHOST='ep-mute-scene-183386.ap-southeast-1.aws.neon.tech'
 PGDATABASE='docconnect'
