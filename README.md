@@ -138,6 +138,9 @@ npm run server
 <details>
   <summary>Click to view </summary>
 
+```Flowchart```
+  ![Figma Design](https://github.com/skamiliya/DocConnect/blob/73431e254a7bbe914981038bb9e6b8823aa237dc/Flowchart.png)
+
 
 </details>
 
