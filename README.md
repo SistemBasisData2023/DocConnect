@@ -145,9 +145,9 @@ npm run server
 
 ## Relational Table and UML
 <details>
-  <summary>Click to view </summary>
-  ```UML```
-  ![drawSQL-roughview-export-2023-06-07](https://github.com/SistemBasisData2023/DocConnect/assets/88538229/d02dbab3-569f-4ed6-ae0c-361553709e71)
+  <summary>Click to view UML</summary>
+  ![drawSQL-roughview-export-2023-06-07](https://github.com/SistemBasisData2023/DocConnect/assets/88538229/d02dbab3-569f-4ed6-ae0c-361553709e71))
+
 </details>
 
 
