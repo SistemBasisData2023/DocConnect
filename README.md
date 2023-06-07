@@ -151,11 +151,12 @@ npm run server
   ```UML```
   ![drawSQL-roughview-export-2023-06-07](https://github.com/SistemBasisData2023/DocConnect/assets/88538229/d02dbab3-569f-4ed6-ae0c-361553709e71)
 
-    <summary>Click to view </summary>
+    <summary>Click to view Relational Table</summary>
 
  ```Relational Table```
   ![Figma Design](https://github.com/skamiliya/DocConnect/blob/1dbc3dbe07003a58df283410ed17c8b5574a0a75/ERD.png) 
 </details>
+
 
 
 
