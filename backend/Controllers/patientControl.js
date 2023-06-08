@@ -59,8 +59,10 @@ const patientControl = {
       if (patientSigned.rows.length > 0) {
         bcrypt.compare(password, patientSigned.rows[0].password, async (err, compareResult) => {
           if(compareResult == true) {
-            const testPatient = await pool.query(`SELECT * FROM patients WHERE account_id = $1`, [patientSigned.rows[0].account_id]);
+            const testPatient = await pool.query(`SELECT * FROM patients WHERE account_id = $1`, [
+              patientSigned.rows[0].account_id]);
             const patientResult = testPatient.rows[0];
+            
             const result = {};
             result[`message`] = `Welcome back ` + patientResult.name;
             result[`data`] = patientResult;
@@ -88,7 +90,9 @@ const patientControl = {
     try {
 
       const appointment_id = crypto.randomUUID();
-      const bookQuery = await pool.query (`INSERT INTO appointment (appointment_id, patient_id, schedule_id, description, status, appointment_date) VALUES ($1, $2, $3, $4, $5, current_date) RETURNING *`, [
+      const bookQuery = await pool.query (`INSERT INTO appointment 
+      (appointment_id, patient_id, schedule_id, description, status, appointment_date) VALUES 
+      ($1, $2, $3, $4, $5, current_date) RETURNING *`, [
         appointment_id, patient_id, schedule_id, description, 'PENDING'
       ]);
 
@@ -104,7 +108,6 @@ const patientControl = {
 
   },
 
-  
   lookAppointment: async (req, res) => {
     const { patient_id } = req.params;
     try {
