@@ -4,6 +4,18 @@
 body {
   font-size: 14px;
 }
+.appointmentBox{
+  box-sizing: border-box;
+  width: 822px;
+  height: 541px;
+  left: 309px;
+  top: 232px;
+
+  background: #FFFFFF;
+  border: 2px solid #4757FF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 45px;
+}
 .v20_57 {
   width: 100%;
   height: 1024px;
@@ -325,7 +337,7 @@ body {
   opacity: 1;
   text-align: center;
 }
-.container{
+.containerLogin{
 
   padding: 261px 497px 261px 300px
 }
@@ -1761,4 +1773,210 @@ body {
     font-size: 13px;
     opacity: 1;
     text-align: left;
+}
+
+.v194_21 {
+  width: 822px;
+  height: 541px;
+  background: url("../images/v194_21.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
+}
+.v191_22 {
+  width: 822px;
+  height: 541px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  border: 2px solid rgba(71,87,255,1);
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+.v191_24 {
+  width: 300px;
+  height: 59px;
+  background: rgba(71,87,255,1);
+  color: #ffffff;
+  opacity: 1;
+  position: absolute;
+  top: 438px;
+  left: 450px;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+  overflow: hidden;
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 30px;
+  opacity: 1;
+  text-align: center;
+}
+.decline{
+  width: 300px;
+  height: 59px;
+  background: rgba(71,87,255,1);
+  color: #ffffff;
+  opacity: 1;
+  position: absolute;
+  top: 438px;
+  left: 75px;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+  overflow: hidden;
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 30px;
+  opacity: 1;
+  text-align: center;
+}
+
+.v191_30 {
+  width: 268px;
+  height: 37px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 333px;
+  left: 409px;
+}
+.v191_29 {
+  width: 268px;
+  height: 38px;
+  background: rgba(255, 255, 255, 0);
+  opacity: 1;
+  position: absolute;
+  top: 269px;
+  left: 409px;
+}
+.v191_28 {
+  width: 268px;
+  height: 37px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 209px;
+  left: 409px;
+}
+.v191_27 {
+  width: 268px;
+  height: 38px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: absolute;
+  top: 146px;
+  left: 409px;
+}
+.form-select{
+  background-color: #fff;
+  outline:0;
+  border-color: #4757FF;
+  outline-color:#4757FF;
+  box-shadow: none;
+}
+.v191_33 {
+  width: 62px;
+  color: rgba(71,87,255,1);
+  position: absolute;
+  top: 334px;
+  left: 145px;
+  font-family: 'IBM Plex Sans KR', sans-serif;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+.v191_32 {
+  width: 47px;
+  color: rgba(71,87,255,1);
+  position: absolute;
+  top: 266px;
+  left: 145px;
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+.v191_31 {
+  width: 83px;
+  color: rgba(71,87,255,1);
+  position: absolute;
+  top: 210px;
+  left: 145px;
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+.v191_26 {
+  width: 200px;
+  color: rgba(71,87,255,1);
+  position: absolute;
+  top: 148px;
+  left: 145px;
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+}
+.v191_23 {
+  width: 300px;
+  color: rgba(71,87,255,1);
+  position: absolute;
+  top: 46px;
+  left: 65px;
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 30px;
+  opacity: 1;
+  text-align: left;
+}
+.appointmentButton{
+  width: 100px;
+  height: 30px;
+  background-color: #4757FF;
+  border-color: #4757FF;
+  font-size: 15px;
+  color: #ffffff;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+}
+.status {
+  width: 400px;
+  height: 59px;
+  background: rgba(71,87,255,1);
+  color: #ffffff;
+  opacity: 1;
+  position: absolute;
+  top: 438px;
+  left: 200px;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+  overflow: hidden;
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 30px;
+  opacity: 1;
+  text-align: center;
 }
