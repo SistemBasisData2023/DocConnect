@@ -7,9 +7,10 @@ const bcrypt = require('bcrypt');
 const pool = require('./db');
 
 // Routes used
-const adminRoute = require('../backend/Routes/adminRoute');
-const patientRoute = require('../backend/Routes/patientRoute');
-const doctorRoute = require('../backend/Routes/doctorRoute');
+const adminRoute = require('./Routes/adminRoute');
+const patientRoute = require('./Routes/patientRoute');
+const doctorRoute = require('./Routes/doctorRoute');
+const frontendRoute = require('./Routes/frontendRoute');
 
 const app = express();
 
@@ -17,6 +18,11 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/public'));
+
+/*Set EJS template Engine*/
+app.set('views','./Views');
+app.set('view engine','ejs');
 
 // Connect to database
 pool.connect((err) =>{
@@ -31,6 +37,7 @@ pool.connect((err) =>{
 app.use('/admin', adminRoute);
 app.use('/patient', patientRoute);
 app.use('/doctor', doctorRoute);
+app.use('/views', frontendRoute);
 
 // Connect to port and server
 const port = process.env.PORT || 5000
