@@ -77,7 +77,7 @@ npm run server
 ## Tables
 
 ### 1.  ```Patients```
-[ desc ]
+This table is used to store patient information when registering on the website.
 ```
 1. Patient_ID
 2. Name
@@ -88,7 +88,7 @@ npm run server
 ```
 
 ### 2.  ```Doctors```
-[ desc ]
+This table is used to store doctor information when registering on the website.
 ```
 1. Doctors_ID
 2. Account_ID
@@ -100,7 +100,7 @@ npm run server
 ```
 
 ### 3.  ```Account```
-[ desc ]
+This table is used to store doctors and patients account information. 
 ```
 1. Account_ID
 2. Email
@@ -109,7 +109,7 @@ npm run server
 ```
 
 ### 4.  ```Appointment```
-[ desc ]
+This table is used to store appointment information when patients make appointments.
 ```
 1. Appointment_ID
 2. Patient_ID
@@ -119,7 +119,7 @@ npm run server
 ```
 
 ### 5.  ```Schedule```
-[ desc ]
+This table is used to store schedule information when doctors input their schedule.
 ```
 1. Schedule_ID
 2. Doctor_ID
@@ -128,7 +128,7 @@ npm run server
 ```
 
 ### 6.  ```Department```
-[ desc ]
+This table is used to store departments name and their ID.
 ```
 1. Department_ID
 2. Department_Name
@@ -139,8 +139,8 @@ npm run server
   <summary>Click to view </summary>
 
 ```Flowchart```
-  ![Figma Design](https://github.com/skamiliya/DocConnect/blob/73431e254a7bbe914981038bb9e6b8823aa237dc/Flowchart.png)
 
+<img width="7068" alt="Flowchart" src="https://github.com/SistemBasisData2023/DocConnect/assets/88538229/8515ba4f-832a-41f9-888c-dbf5d0ce1478">
 
 </details>
 
@@ -152,9 +152,11 @@ npm run server
   <summary>Click to view</summary>
 
   ```UML```
+
   ![drawSQL-roughview-export-2023-06-07](https://github.com/SistemBasisData2023/DocConnect/assets/88538229/d02dbab3-569f-4ed6-ae0c-361553709e71)
 
  ```Relational Table```
+
   ![Figma Design](https://github.com/skamiliya/DocConnect/blob/1dbc3dbe07003a58df283410ed17c8b5574a0a75/ERD.png) 
 </details>
 
