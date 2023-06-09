@@ -25,6 +25,20 @@
         left: 110px;
         top: 5px;
     }
+    .login {
+      display: flex;
+      height: 100vh;
+    }
+    .container-left {
+      margin-top: 200px;
+      margin-left: 100px;
+      margin-right: 50px;
+    }
+    .image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
   </style>
 </head>
 
@@ -32,7 +46,7 @@
   <!-- Top Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top" style="border-bottom: 2px solid #4757ff; color: #4757ff;">
     <div class="container-fluid" style="margin-left: 50px;">
-      <a class="navbar-brand" style="border-color: #ffffff00;" href="#">
+      <a href="DocHome.html" class="navbar-brand" style="border-color: #4757ff;" href="#">
         <img src="images/DClogo.png" style="width: 200px;">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -42,48 +56,37 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="DocHome.html" style="color: #4757ff;">Home</a>
+            <a class="nav-link" href="DocAccountDetails.html" style="color: #4757ff;">Account Details</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="DocSchedule.html"style="color: #4757ff;">Schedule</a>
+            <a class="nav-link" href="DocMakeSchedule.html"style="color: #4757ff;">Make Schedules</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="DocMakeSchedule.html"style="color: #4757ff;">Make Schedule</a>
+            <a class="nav-link" href="Doc Review Appointment.html"style="color: #4757ff;">Review Appointment</a>
           </li>
         </ul>
       </div>
-      <a  href="DocAccountDetails.html" class="nav-item" style="text-decoration: none; padding-right: 50px;">Hi, name</a>
+      <div class="dropstart">
+        <a href="DocAccountDetails.html"class="nav-item" style="text-decoration: none;">Hi, Dr. name</a>
+      </div>
     </div>
   </nav>
 
   <!-- Content -->
-  <div class="container" style="margin-top: 200px;">
-    <div class="box justify-content-center d-flex">
-          <h1 class="v191_23">Review Appointment</h1>
-             <ul class="col" style="padding-left: 100px; padding-top: 150px; padding-right: 100px;">
-              <li class="appointmentLabel">Specialist Needed</li>
-              <li class="appointmentLabel">Name</li>
-              <li class="appointmentLabel">Day</li>
-              <li class="appointmentLabel">Time</li>
-              <li>
-                <a href="#">
-                  <button class="AcceptOrDecline">Accept</button>
-                </a>
-              </li>
-             </ul>
-             <ul class="col" style="padding-top: 150px;">
-              <li class="appointmentLabelinput">Sp.x</li>
-              <li class="appointmentLabelinput">Mr.x</li>
-              <li class="appointmentLabelinput">Senin</li>
-              <li class="appointmentLabelinput">12 AM</li>
-              <li>
-                <a href="#">
-                  <button class="AcceptOrDecline">Decline</button>
-                </a>
-              </li>
-            </ul>
+  <div class="login d-flex" style="height: max-width;">
+    <div class="container-left">
+      <h1 style="color: #4757ff; font-size: 35pt;">Make Schedules for Appointments!</h1>
+      <p class="justify-content-center"style="color: #4757ff;width: 600px; padding-top:40px;">DocConnect is a cutting-edge web platform that brings doctors and patients together. With a user-friendly interface, we simplify the process of finding and connecting with the right healthcare professional. Discover a wide range of experienced doctors, schedule appointments, and enjoy secure virtual consultations. Join DocConnect today and revolutionize your healthcare experience.</p>
+      <a href="DocMakeSchedule.html">
+        <button class="makeAppointment">Make Schedules</button>
+      </a>
     </div>
+    <div class="container-right" style="height: fit-content;">
+      <img class="image" src="images/sideImage.png" style="width: 100%; height: 950px;">
+    </div> 
   </div>
+
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
