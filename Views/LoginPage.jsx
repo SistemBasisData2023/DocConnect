@@ -30,7 +30,7 @@ export default function LoginPage() {
                         </button>
                     </a>
                     <p>Din't have Account? Register Now</p>
-                    <a href='RegisterUser.jsx'>
+                    <a href='UserRegisterPage.jsx'>
                         <button className='w-full my-5 py-2 bg-[#0d2d68] shadow-lg shadow-teal-500/10 hover:shadow-teal-500/40 text-white font-semibold rounded-lg'>
                             Register
                         </button>
