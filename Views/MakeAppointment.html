@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="../css/main.css" rel="stylesheet" />
+  <link href="./css/main.css" rel="stylesheet" />
   <title>Template Lama</title>
   <script src="https://kit.fontawesome.com/7044071874.js" crossorigin="anonymous"></script>
   <!-- Bootstrap CSS -->
@@ -31,7 +31,7 @@
 <body>
   <!-- Top Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top" style="border-bottom: 2px solid #4757ff; color: #4757ff;">
-    <div class="container-fluid" style="margin-left: 50px;">
+    <div class="container" style="margin-left: 50px;">
       <a class="navbar-brand" style="border-color: #ffffff00;" href="#">
         <img src="images/DClogo.png" style="width: 200px;">
       </a>
@@ -42,71 +42,73 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="userHome.html" style="color: #4757ff;">Home</a>
+            <a class="nav-link" href="#" style="color: #4757ff;">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="UserReviewAppointment.html" style="color: #4757ff;">Review Appointment</a>
+            <a class="nav-link" href="#"style="color: #4757ff;">Schedule</a>
           </li>
         </ul>
       </div>
-      <div class="dropstart">
-        <a class="nav-item" href="UserAccountDetails.html" style="text-decoration: none;">Hi, name</a>
-      </div>
+      <a class="nav-item" style="text-decoration: none;">Hi, name</a>
     </div>
   </nav>
 
-  <div class="container" style="margin-top: 200px;">
-    <div class="box justify-content-center d-flex">
-          <h1 class="v191_23">Make Appointment</h1>
-             <ul class="col" style="padding-left: 100px; padding-top: 150px; padding-right: 100px;">
-              <li class="appointmentLabel">Specialist</li>
-              <li class="appointmentLabel">Doctor</li>
-              <li class="appointmentLabel">Day</li>
-              <li class="appointmentLabel">Time</li>
-             </ul>
-             <ul class="col" style="padding-top: 150px;">
-              <li class="appointmentLabelinput">
-                <select class="form-select" aria-label = "default select example">
-                  <option value ="1">Sp.x</option>
-                  <option value ="2">Sp.x</option>
-                  <option value ="3">Sp.x</option>
-                  <option value ="4">Sp.x</option>
-                  <option value ="5">Sp.x</option>
-                </select>
-              </li>
-              <li class="appointmentLabelinput">
-                <select class="form-select" aria-label = "default select example">
-                  <option value ="1">Dr.x</option>
-                  <option value ="2">Dr.x</option>
-                  <option value ="3">Dr.x</option>
-                  <option value ="4">Dr.x</option>
-                  <option value ="5">Dr.x</option>
-                </select>
-              </li>
-              <li class="appointmentLabelinput">
-                <select class="form-select" aria-label = "default select example">
-                  <option value ="Monday">Monday</option>
-                  <option value ="Tuesday">Tuesday</option>
-                  <option value ="Wednesday">Wednesday</option>
-                  <option value ="Thursday">Thursday</option>
-                  <option value ="Friday">Friday</option>
-                </select>
-              </li>
-              <li class="appointmentLabelinput">
-                <select class="form-select" aria-label = "default select example">
-                  <option value ="10 AM">10 AM</option>
-                  <option value ="11 AM">11 AM</option>
-                  <option value ="12 AM">12 AM</option>
-                  <option value ="13 PM">13 PM</option>
-                  <option value ="14 PM">14 PM</option>
-                  <option value ="15 PM">15 PM</option>
-                  <option value ="16 PM">16 PM</option>
-                </select>
-              </li>
-            </ul>
-            <a href="UserReviewAppointment.html">
-              <button class="status">Make Appointment</button>
+  <!-- Content -->
+  <div class="container">
+    <div class="content">
+        <div class="v194_21">
+            <div class="v191_22"></div>
+            <a href="#">
+                <button class="status" style="border-color: #4757ff;">Book Appointment</button>
             </a>
+            <div class="v191_30">
+                <select class="form-select" aria-label = "default select example">
+                    <option selected>At what time does your appointment start?</option>
+                    <option value ="10 AM">10 AM</option>
+                    <option value ="11 AM">11 AM</option>
+                    <option value ="12 AM">12 AM</option>
+                    <option value ="13 PM">13 PM</option>
+                    <option value ="14 PM">14 PM</option>
+                    <option value ="15 PM">15 PM</option>
+                    <option value ="16 PM">16 PM</option>
+                </select>
+            </div>
+            <div class="v191_29">
+                <select class="form-select" aria-label = "default select example">
+                    <option selected>Choose the day for your appointment</option>
+                    <option value ="Monday">Monday</option>
+                    <option value ="Tuesday">Tuesday</option>
+                    <option value ="Wednesday">Wednesday</option>
+                    <option value ="Thursday">Thursday</option>
+                    <option value ="Friday">Friday</option>
+                </select>
+            </div>
+            <div class="v191_28">
+                <select class="form-select" aria-label = "default select example">
+                    <option selected>Choose your doctor</option>
+                    <option value ="1">Dr.x</option>
+                    <option value ="2">Dr.x</option>
+                    <option value ="3">Dr.x</option>
+                    <option value ="4">Dr.x</option>
+                    <option value ="5">Dr.x</option>
+                </select>
+            </div>
+            <div class="v191_27">
+                <select class="form-select" aria-label = "default select example">
+                    <option selected>Choose your specialist</option>
+                    <option value ="1">Sp.x</option>
+                    <option value ="2">Sp.x</option>
+                    <option value ="3">Sp.x</option>
+                    <option value ="4">Sp.x</option>
+                    <option value ="5">Sp.x</option>
+                </select>
+            </div>
+            <span class="v191_33">Time</span>
+            <span class="v191_32">Day</span>
+            <span class="v191_31">Doctor</span>
+            <span class="v191_26">Spesialist</span>
+            <span class="v191_23">Make Appointment</span>
+          </div>
     </div>
   </div>
 

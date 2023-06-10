@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./css/main.css" rel="stylesheet" />
+  <title>Template Lama</title>
+  <script src="https://kit.fontawesome.com/7044071874.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@600&display=swap');
+    .content {
+      margin-top: 200px;
+      text-align: center;
+    }
+    .bi{
+        font-size: 20pt;
+        width: 20px;
+        height: 20px;
+        opacity: 1;
+        position: relative;
+        color: #4757ff;
+        left: 110px;
+        top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top" style="border-bottom: 2px solid #4757ff; color: #4757ff;">
+    <div class="container" style="margin-left: 50px;">
+      <a class="navbar-brand" style="border-color: #ffffff00;" href="#">
+        <img src="/images/DClogo.png" style="width: 200px;">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="user" style="color: #4757ff;">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"style="color: #4757ff;">Schedule</a>
+          </li>
+        </ul>
+      </div>
+      <a class="nav-item" style="text-decoration: none;">Hi, name</a>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="container">
+    <div class="content">
+        <div class="v194_21">
+            <div class="v191_22"></div>
+            <a href="#">
+                <button class="status" style="border-color: #4757ff;" onclick="makeAppointment()">Book Appointment</button>
+            </a>
+            <form method="post" action="" id="book-appointment-form">
+            <div class="v191_30">
+                <select id="dept" class="form-select" aria-label = "default select example">
+                    <option selected>Choose your specialist</option>
+                    <!-- for loop code start -->
+                    <% for(var i=0; i < dept.length; i++) { %>
+                      <option value="<%= dept[i].department_id %>"><%= dept[i].department_name%></option>
+                    <% } %>
+                   <!-- for loop code end -->
+                </select>
+            </div>
+            <div class="v191_29">
+                <select id="doc" name="doctor_id" class="form-select" aria-label = "default select example">
+                    <option selected>Choose your doctor</option>
+                </select>
+            </div>
+            <div class="v191_28">
+                <select id="schedule" name="schedule_id" class="form-select" aria-label = "default select example">
+                  <option selected>Choose the day and time for your appointment</option>
+                  <!-- <option value ="Monday">Monday</option>
+                  <option value ="Tuesday">Tuesday</option>
+                  <option value ="Wednesday">Wednesday</option>
+                  <option value ="Thursday">Thursday</option>
+                  <option value ="Friday">Friday</option> -->
+                </select>
+            </div>
+            <div class="v191_27">
+              <textarea type="text" name="description" placeholder="description" class="form-select"> 
+              </textarea>
+                <!-- <select class="form-select" aria-label = "default select example">
+                  <option selected>At what time does your appointment start?</option>
+                  <option value ="10 AM">10 AM</option>
+                  <option value ="11 AM">11 AM</option>
+                  <option value ="12 AM">12 AM</option>
+                  <option value ="13 PM">13 PM</option>
+                  <option value ="14 PM">14 PM</option>
+                  <option value ="15 PM">15 PM</option>
+                  <option value ="16 PM">16 PM</option>
+                </select> -->
+            </div> 
+          </form>
+            <span class="v191_33">Time</span>
+            <span class="v191_32">Day</span>
+            <span class="v191_31">Doctor</span>
+            <span class="v191_26">Spesialist</span>
+            <span class="v191_23">Make Appointment</span>
+          </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script>
+    // function show(anything){
+    //     document.querySelector('.btn btn-secondary dropdown-toggle').value = anything;
+    // }
+
+    // let dropdown = document.querySelector('.dropdown');
+    // dropdown.onclick = function(){
+    //     dropdown.classList.toggle('active');
+    // }
+
+    $(document).ready(function(){
+        $('#dept').change(function(){
+          var id = $("#dept").val();
+          $.ajax({
+            url:"/doctor/getDoctor/byDeptId/"+id,
+            type:"get",
+            success:function(res){
+              var sel = $("#doc");
+              const data = res.data;
+              sel.empty();
+              sel.append('<option selected>Choose your doctor</option>');
+              for (var i=0; i<data.length; i++) {
+                sel.append('<option value="' + data[i].doctor_id + '">' + data[i].name + '</option>');
+              }
+              return false;
+            },
+            error:function(xhr, status, error){
+              console.error(error);
+              return false;
+            }
+           });
+        });
+
+        $(`#doc`).change(function(){
+          var id = $(`#doc`).val();
+          $.ajax({
+            url:"/doctor/showSchedule/"+id,
+            type:"get",
+            success:function(res){
+              var sel = $("#schedule");
+              const data = res.data;
+              sel.empty();
+              sel.append('<option selected>Choose the day and time for your appointment</option>');
+              for (var i=0; i<data.length; i++) {
+                sel.append('<option value="' + data[i].schedule_id + '">' + data[i].date + ' - ' + data[i].time +'</option>');
+              }
+              return false;
+            },
+            error:function(xhr, status, error){
+              console.error(error);
+              return false;
+            }
+           });
+        });
+    });
+
+
+    function makeAppointment(){
+        let data = $("#book-appointment-form").serialize();
+        const patientId = JSON.parse(localStorage.getItem("dataLogin")).patient_id;
+        data = data+ '&patient_id='+patientId;
+        console.log(data);
+        $.ajax({
+            url:"/patient/book",
+            type:"post",
+            data:data,
+            success:function(res){
+               window.location.href = '/views/userReviewAppointment?appointmentId='+res.data;
+               return false;
+            },
+            error:function(xhr, status, error){
+                
+                console.log(error);
+                return false;
+            }
+          });
+    }
+    
+  </script>
+</body>
+
+</html>

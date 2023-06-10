@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./css/main.css" rel="stylesheet" />
+  <link href="/css/main.css" rel="stylesheet" />
   <title>Template Lama</title>
   <script src="https://kit.fontawesome.com/7044071874.js" crossorigin="anonymous"></script>
   <!-- Bootstrap CSS -->
@@ -33,7 +33,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top" style="border-bottom: 2px solid #4757ff; color: #4757ff;">
     <div class="container" style="margin-left: 50px;">
       <a class="navbar-brand" style="border-color: #ffffff00;" href="#">
-        <img src="images/DClogo.png" style="width: 200px;">
+        <img src="/images/DClogo.png" style="width: 200px;">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -45,7 +45,7 @@
             <a class="nav-link" href="#" style="color: #4757ff;">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="DocMakeSchedule.html"style="color: #4757ff;">Schedule</a>
+            <a class="nav-link" href="docMakeSchedule"style="color: #4757ff;">Schedule</a>
           </li>
         </ul>
       </div>
@@ -59,18 +59,18 @@
         <div class="v194_21">
             <div class="v191_22"></div>
             <a href="#">
-                <button class="v191_24" style="border-color: #4757ff;">Accept</button>
+                <button class="v191_24" style="border-color: #4757ff;" onclick="approve('<%= data.appointment_id%>')">Accept</button>
             </a>
             <a href="#">
-                <button class="decline" style="border-color: #4757ff;">Decline</button>
+                <button class="decline" style="border-color: #4757ff;" onclick="reject('<%= data.appointment_id%>')">Decline</button>
             </a>
-            <div class="v191_30">10am
+            <div class="v191_30"><%= data.time%>
             </div>
-            <div class="v191_29">Monday
+            <div class="v191_29"><%= data.date%>
             </div>
-            <div class="v191_28">Mr.X
+            <div class="v191_28"><%= data.patient_name%>
             </div>
-            <div class="v191_27">Sp.x
+            <div class="v191_27"><%= data.department_name%>
             </div>
             <span class="v191_33">Time</span>
             <span class="v191_32">Day</span>
@@ -82,7 +82,8 @@
   </div>
 
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>\
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
   <script>
     function show(anything){
         document.querySelector('.btn btn-secondary dropdown-toggle').value = anything;
@@ -92,6 +93,50 @@
     dropdown.onclick = function(){
         dropdown.classList.toggle('active');
     }
+
+    function approve(appointment_id){
+      $.ajax({
+            url:"/doctor/update",
+            type:"put",
+            data: {
+              status: 'ACCEPTED',
+              appointment_id: appointment_id
+            },
+            success:function(res){
+              const doctorId = JSON.parse(localStorage.getItem("dataLogin")).doctor_id;
+              window.location.href = '/views/docSchedule?doctorId='+doctorId;
+              return false;
+            },
+            error:function(xhr, status, error){
+                
+                console.log(error);
+                return false;
+            }
+           });
+    }
+
+    function reject(appointment_id){
+      $.ajax({
+            url:"/doctor/update",
+            type:"put",
+            data: {
+              status: 'REJECTED',
+              appointment_id: appointment_id
+            },
+            success:function(res){
+              const doctorId = JSON.parse(localStorage.getItem("dataLogin")).doctor_id;
+              window.location.href = '/views/docSchedule?doctorId='+doctorId;
+              return false;
+            },
+            error:function(xhr, status, error){
+                
+                console.log(error);
+                return false;
+            }
+           });
+    }
+    
+
   </script>
 </body>
 

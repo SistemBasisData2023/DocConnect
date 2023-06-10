@@ -17,33 +17,46 @@
                 <div class="v20_85"></div>
                 <div class="v20_86"></div>
                 <div class="v20_90">
-                    <a href="LoginPage.html">
-                        <button class="v20_92">Register as Doctor</button>
-                    </a>
+                    <input type="button" class="v20_92" value="Register as Doctor" onClick="registerDoctor()">
                 </div>
+                <form method="post" action="" id="doctor-reg-form">
                 <div class="v20_98">
                     <div class="v20_99"></div>
-                    <input type = "text" name ="" placeholder="Email" class ="v20_101">
-                </div><div class="v24_143">
-                    <input type = "text" name ="" placeholder="Password" class ="v24_138">
+                    <input type = "text" name ="email" placeholder="Email" class ="v20_101">
+                </div>
+                <div class="v24_143">
+                    <input type = "text" name ="password" placeholder="Password" class ="v24_138">
                 </div>
                     <div class="v24_139"><div class="v24_140"></div>
-                    <input type = "text" name ="" placeholder="Name" class ="v24_142">
+                    <input type = "text" name ="name" placeholder="Name" class ="v24_142">
                 </div>
                 <div class="v24_144">
                     <div class="v24_145">
-                        <input type = "text" name ="" placeholder="Gender" class ="v24_147">
+                        <input type = "text" name ="gender" placeholder="Gender" class ="v24_147">
                     </div>
                 </div>
                     <div class="v24_148">
                         <div class="v24_149"></div>
-                        <input type = "text" name ="" placeholder="Contact" class ="v24_151">
+                        <input type = "text" name ="number" placeholder="Contact" class ="v24_151">
                     </div>
                 <div class="v24_152">
                         <div class="v24_153">
-                            <input type = "text" name ="" placeholder="Department" class ="v24_155">
+                            <!-- <input type = "text" name ="" placeholder="Department" class ="v24_155"> -->
+                            <select id="department_id" name="department_id" class="form-control" placeholder="Department">
+                                    <option value="">-- Select Department --</option>
+                                <!-- for loop code start -->
+                                   <% for(var i=0; i < dept.length; i++) { %>
+                                   <option value="<%= dept[i].department_id %>"><%= dept[i].department_name%></option>
+                                   <% } %>
+                                <!-- for loop code end -->
+                                
+                            </select>
                         </div>
                 </div>
+                <div style="top: 540px; left: 114px; position: absolute; width: 299px; height: 40px;">
+                    <input type = "text" name ="nip" placeholder="NIP" class ="v24_151">
+                </div>
+                </form>
                     <span class="v20_102">fill your credentials below</span>
                     <span class="v20_104">Register as Doctor</span>
                     <div class="DClogo2"></div>
@@ -51,3 +64,32 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+<script>
+        function registerDoctor(){
+           
+           $.ajax({
+            
+            url:"/doctor/register",
+            type:"post",
+            data:$("#doctor-reg-form").serialize(),
+            success:function(res){
+                
+                window.location.href = '/views/login';
+                return false;
+            },
+            error:function(xhr, status, error){
+                
+                console.log(xhr.responseText);
+                var err = '';
+                $.each(JSON.parse(xhr.responseText) , function(i, item) {
+                   
+                     err +='<li>'+item.msg+'</li>';
+                });
+                $(".err-area").html(err);    
+                return false;
+            }
+            
+           });
+        }
+</script>

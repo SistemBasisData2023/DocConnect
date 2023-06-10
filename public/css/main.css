@@ -1102,7 +1102,7 @@ body {
   background-size: cover;
   opacity: 1;
   position: absolute;
-  top: 552px;
+  top: 600px;
   left: 116px;
   overflow: hidden;
 }
@@ -1462,7 +1462,7 @@ body {
   background-size: cover;
   opacity: 1;
   position: absolute;
-  top: 552px;
+  top: 600px;
   left: 116px;
   overflow: hidden;
 }
@@ -1811,7 +1811,7 @@ body {
   left: 200px;
   overflow: hidden;
 }
-.v191_22 {
+.box {
   width: 822px;
   height: 541px;
   background: rgba(255,255,255,1);
@@ -1963,6 +1963,80 @@ body {
   opacity: 1;
   text-align: left;
 }
+ul{
+  list-style-type: none;
+}
+.appointmentLabel{
+  width: 200px;
+  height: 50px;
+  color: rgba(71,87,255,1);
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+  text-decoration: none;
+}
+.scheduleLabel{
+  width: 200px;
+  height: 50px;
+  color: rgba(71,87,255,1);
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+  text-decoration: none;
+}
+.scheduleLabelinput{
+  width: 250px;
+  height: 50px;
+  color: rgb(0, 0, 0);
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+  text-decoration: none;
+}
+.form-select{
+  width: 200px;
+  border-color: #4757FF;
+  color: #4757FF;
+}
+.AccountLabel{
+  width: 200px;
+  height: 50px;
+  color: rgba(71,87,255,1);
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+  text-decoration: none;
+}
+.appointmentLabelinput{
+  width: 200px;
+  height: 50px;
+  color: rgb(0, 0, 0);
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+  text-decoration: none;
+}
+.AccountLabelinput{
+  width: 200px;
+  height: 50px;
+  color: rgb(0, 0, 0);
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 20px;
+  opacity: 1;
+  text-align: left;
+  text-decoration: none;
+}
 .v191_23 {
   width: 300px;
   color: rgba(71,87,255,1);
@@ -1991,10 +2065,74 @@ body {
   width: 400px;
   height: 59px;
   background: rgba(71,87,255,1);
+  border-color: #4757FF;
   color: #ffffff;
   opacity: 1;
   position: absolute;
   top: 438px;
+  left: 200px;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+  overflow: hidden;
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 30px;
+  opacity: 1;
+  text-align: center;
+}
+.makeAppointment {
+  width: 400px;
+  height: 59px;
+  background: rgba(71,87,255,1);
+  border-color: #4757FF;
+  color: #ffffff;
+  opacity: 1;
+  position: relative;
+  margin-top: 30px;
+  margin-left: 50px;
+  border-top-left-radius: 45px;
+  border-top-right-radius: 45px;
+  border-bottom-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+  overflow: hidden;
+  font-family: IBM Plex Sans KR;
+  font-weight: Bold;
+  font-size: 30px;
+  opacity: 1;
+  text-align: center;
+}
+.AcceptOrDecline{
+    width: 250px;
+    height: 59px;
+    top: 40px;
+    background: rgba(71,87,255,1);
+    border-color: #4757FF;
+    color: #ffffff;
+    opacity: 1;
+    position: relative;
+    border-top-left-radius: 45px;
+    border-top-right-radius: 45px;
+    border-bottom-left-radius: 45px;
+    border-bottom-right-radius: 45px;
+    overflow: hidden;
+    font-family: IBM Plex Sans KR;
+    font-weight: Bold;
+    font-size: 30px;
+    opacity: 1;
+    text-align: center;
+}
+
+.logoutButton{
+  width: 400px;
+  height: 59px;
+  background: rgba(71,87,255,1);
+  border-color: #4757FF;
+  color: #ffffff;
+  opacity: 1;
+  position: absolute;
+  top: 450px;
   left: 200px;
   border-top-left-radius: 45px;
   border-top-right-radius: 45px;

@@ -1106,21 +1106,6 @@ body {
   left: 116px;
   overflow: hidden;
 }
-.RegisterButton{
-  width: 300px;
-  height: 50px;
-  color: #ffffff;
-  background-color: #4757FF;
-  border: none;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 620px;
-  left: 100px;
-  overflow: hidden;
-}
 .v20_91 {
   width: 300px;
   height: 50px;
@@ -1301,6 +1286,19 @@ body {
 .name {
   color: #fff;
 }
+.v24_152 {
+  width: 299px;
+  height: 40px;
+  background: url("../images/v24_152.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  opacity: 1;
+  position: absolute;
+  top: 481px;
+  left: 114px;
+  overflow: hidden;
+}
 .v24_153 {
   width: 299px;
   height: 40px;
@@ -1370,6 +1368,16 @@ body {
 }
 body {
   font-size: 14px;
+}
+.v20_78 {
+  width: 100%;
+  height: 1024px;
+  background: rgba(255,255,255,1);
+  opacity: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
 }
 .v20_79 {
   width: 100%;
@@ -1692,6 +1700,7 @@ body {
 .v24_152 {
   width: 299px;
   height: 40px;
+  background: url("../images/v24_152.png");
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -1700,45 +1709,13 @@ body {
   top: 481px;
   left: 114px;
   overflow: hidden;
-  width: 276px;
-  color: rgb(0, 0, 0);
-  background-color: rgba(232,232,232,1);
-  border: none;
-  outline: none;
-  font-family: Jaldi;
-  font-weight: Regular;
-  font-size: 20px;
-  opacity: 1;
-  text-align: left;
-}
-.DocInputForm {
-  width: 299px;
-  height: 40px;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  opacity: 1;
-  position: absolute;
-  top: 481px;
-  left: 114px;
-  overflow: hidden;
-  width: 276px;
-  color: rgb(0, 0, 0);
-  background-color: rgba(232,232,232,1);
-  border: none;
-  outline: none;
-  font-family: Jaldi;
-  font-weight: Regular;
-  font-size: 20px;
-  opacity: 1;
-  text-align: left;
 }
 .v24_153 {
   width: 299px;
   height: 40px;
   background: rgba(232,232,232,1);
   opacity: 1;
-  position: absolute;
+  position: relative;
   top: 0px;
   left: 0px;
 }
@@ -1808,10 +1785,10 @@ body {
   opacity: 1;
   position: relative;
   top: 0px;
-  left: 200px;
+  left: 0px;
   overflow: hidden;
 }
-.box {
+.v191_22 {
   width: 822px;
   height: 541px;
   background: rgba(255,255,255,1);
@@ -1867,11 +1844,7 @@ body {
   opacity: 1;
   text-align: center;
 }
-.sideImage {
-  background-image: url('./images/"v170:30.png');
-  width: 837px;
-  height: 926px;
-}
+
 .v191_30 {
   width: 268px;
   height: 37px;
@@ -1963,80 +1936,6 @@ body {
   opacity: 1;
   text-align: left;
 }
-ul{
-  list-style-type: none;
-}
-.appointmentLabel{
-  width: 200px;
-  height: 50px;
-  color: rgba(71,87,255,1);
-  font-family: IBM Plex Sans KR;
-  font-weight: Bold;
-  font-size: 20px;
-  opacity: 1;
-  text-align: left;
-  text-decoration: none;
-}
-.scheduleLabel{
-  width: 200px;
-  height: 50px;
-  color: rgba(71,87,255,1);
-  font-family: IBM Plex Sans KR;
-  font-weight: Bold;
-  font-size: 20px;
-  opacity: 1;
-  text-align: left;
-  text-decoration: none;
-}
-.scheduleLabelinput{
-  width: 250px;
-  height: 50px;
-  color: rgb(0, 0, 0);
-  font-family: IBM Plex Sans KR;
-  font-weight: Bold;
-  font-size: 20px;
-  opacity: 1;
-  text-align: left;
-  text-decoration: none;
-}
-.form-select{
-  width: 200px;
-  border-color: #4757FF;
-  color: #4757FF;
-}
-.AccountLabel{
-  width: 200px;
-  height: 50px;
-  color: rgba(71,87,255,1);
-  font-family: IBM Plex Sans KR;
-  font-weight: Bold;
-  font-size: 20px;
-  opacity: 1;
-  text-align: left;
-  text-decoration: none;
-}
-.appointmentLabelinput{
-  width: 200px;
-  height: 50px;
-  color: rgb(0, 0, 0);
-  font-family: IBM Plex Sans KR;
-  font-weight: Bold;
-  font-size: 20px;
-  opacity: 1;
-  text-align: left;
-  text-decoration: none;
-}
-.AccountLabelinput{
-  width: 200px;
-  height: 50px;
-  color: rgb(0, 0, 0);
-  font-family: IBM Plex Sans KR;
-  font-weight: Bold;
-  font-size: 20px;
-  opacity: 1;
-  text-align: left;
-  text-decoration: none;
-}
 .v191_23 {
   width: 300px;
   color: rgba(71,87,255,1);
@@ -2065,74 +1964,10 @@ ul{
   width: 400px;
   height: 59px;
   background: rgba(71,87,255,1);
-  border-color: #4757FF;
   color: #ffffff;
   opacity: 1;
   position: absolute;
   top: 438px;
-  left: 200px;
-  border-top-left-radius: 45px;
-  border-top-right-radius: 45px;
-  border-bottom-left-radius: 45px;
-  border-bottom-right-radius: 45px;
-  overflow: hidden;
-  font-family: IBM Plex Sans KR;
-  font-weight: Bold;
-  font-size: 30px;
-  opacity: 1;
-  text-align: center;
-}
-.makeAppointment {
-  width: 400px;
-  height: 59px;
-  background: rgba(71,87,255,1);
-  border-color: #4757FF;
-  color: #ffffff;
-  opacity: 1;
-  position: relative;
-  margin-top: 30px;
-  margin-left: 50px;
-  border-top-left-radius: 45px;
-  border-top-right-radius: 45px;
-  border-bottom-left-radius: 45px;
-  border-bottom-right-radius: 45px;
-  overflow: hidden;
-  font-family: IBM Plex Sans KR;
-  font-weight: Bold;
-  font-size: 30px;
-  opacity: 1;
-  text-align: center;
-}
-.AcceptOrDecline{
-    width: 250px;
-    height: 59px;
-    top: 40px;
-    background: rgba(71,87,255,1);
-    border-color: #4757FF;
-    color: #ffffff;
-    opacity: 1;
-    position: relative;
-    border-top-left-radius: 45px;
-    border-top-right-radius: 45px;
-    border-bottom-left-radius: 45px;
-    border-bottom-right-radius: 45px;
-    overflow: hidden;
-    font-family: IBM Plex Sans KR;
-    font-weight: Bold;
-    font-size: 30px;
-    opacity: 1;
-    text-align: center;
-}
-
-.logoutButton{
-  width: 400px;
-  height: 59px;
-  background: rgba(71,87,255,1);
-  border-color: #4757FF;
-  color: #ffffff;
-  opacity: 1;
-  position: absolute;
-  top: 450px;
   left: 200px;
   border-top-left-radius: 45px;
   border-top-right-radius: 45px;

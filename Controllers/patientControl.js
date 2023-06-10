@@ -98,7 +98,7 @@ const patientControl = {
 
       const result = {};
       result[`message`] = `Appointment added: `;
-      result[`data`] = bookQuery;
+      result[`data`] = appointment_id;
       res.status(200).json(result);
       
     } catch (err) {

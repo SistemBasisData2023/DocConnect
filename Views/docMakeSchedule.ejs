@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./css/main.css" rel="stylesheet" />
+  <link href="/css/main.css" rel="stylesheet" />
   <title>Template Lama</title>
   <script src="https://kit.fontawesome.com/7044071874.js" crossorigin="anonymous"></script>
   <!-- Bootstrap CSS -->
@@ -33,7 +33,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top" style="border-bottom: 2px solid #4757ff; color: #4757ff;">
     <div class="container" style="margin-left: 50px;">
       <a class="navbar-brand" style="border-color: #ffffff00;" href="#">
-        <img src="images/DClogo.png" style="width: 200px;">
+        <img src="/images/DClogo.png" style="width: 200px;">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,10 +42,10 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#" style="color: #4757ff;">Home</a>
+            <a class="nav-link" href="doc" style="color: #4757ff;">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="DocSchedule.html"style="color: #4757ff;">Schedule</a>
+            <a class="nav-link" href="docSchedule"style="color: #4757ff;">Schedule</a>
           </li>
         </ul>
       </div>
@@ -59,10 +59,11 @@
         <div class="v194_21">
             <div class="v191_22"></div>
             <a href="#">
-                <button class="v191_24" style="border-color: #4757ff;">Make Schedule</button>
+                <button class="v191_24" style="border-color: #4757ff;" onclick="makeSchedule()">Make Schedule</button>
             </a>
+            <form method="post" action="" id="make-schedule-form">
             <div class="v191_30">
-                <select class="form-select" aria-label = "default select example">
+                <select name="time" class="form-select" aria-label = "default select example">
                     <option selected>At what time does your appointment start?</option>
                     <option value ="10 AM">10 AM</option>
                     <option value ="11 AM">11 AM</option>
@@ -74,7 +75,7 @@
                 </select>
             </div>
             <div class="v191_29">
-                <select class="form-select" aria-label = "default select example">
+                <select name="date" class="form-select" aria-label = "default select example">
                     <option selected>Choose the day for your appointment</option>
                     <option value ="Monday">Monday</option>
                     <option value ="Tuesday">Tuesday</option>
@@ -84,25 +85,16 @@
                 </select>
             </div>
             <div class="v191_28">
-                <select class="form-select" aria-label = "default select example">
-                    <option selected>Choose your doctor</option>
-                    <option value ="1">Dr.x</option>
-                    <option value ="2">Dr.x</option>
-                    <option value ="3">Dr.x</option>
-                    <option value ="4">Dr.x</option>
-                    <option value ="5">Dr.x</option>
+                <select name="doctor_id" class="form-select" aria-label = "default select example">
+                    <option value ="<%= data.doctor_id %>"><%= data.name %></option>
                 </select>
             </div>
             <div class="v191_27">
-                <select class="form-select" aria-label = "default select example">
-                    <option selected>Choose your specialist</option>
-                    <option value ="1">Sp.x</option>
-                    <option value ="2">Sp.x</option>
-                    <option value ="3">Sp.x</option>
-                    <option value ="4">Sp.x</option>
-                    <option value ="5">Sp.x</option>
+                <select name="department_id" class="form-select" aria-label = "default select example">
+                    <option value ="<%= data.department_id %>"><%= data.department_name %></option>
                 </select>
             </div>
+            </form>
             <span class="v191_33">Time</span>
             <span class="v191_32">Day</span>
             <span class="v191_31">Doctor</span>
@@ -113,7 +105,8 @@
   </div>
 
   <!-- Bootstrap JS -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>\
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
   <script>
     function show(anything){
         document.querySelector('.btn btn-secondary dropdown-toggle').value = anything;
@@ -123,6 +116,34 @@
     dropdown.onclick = function(){
         dropdown.classList.toggle('active');
     }
+
+    function makeSchedule(){
+           
+           $.ajax({
+            
+            url:"/doctor/schedule",
+            type:"post",
+            data:$("#make-schedule-form").serialize(),
+            success:function(res){
+                const doctorId = JSON.parse(localStorage.getItem("dataLogin")).doctor_id;
+                window.location.href = '/views/docSchedule?doctorId='+doctorId;
+                return false;
+            },
+            error:function(xhr, status, error){
+                
+                console.log(xhr.responseText);
+                var err = '';
+                $.each(JSON.parse(xhr.responseText) , function(i, item) {
+                   
+                     err +='<li>'+item.msg+'</li>';
+                });
+                $(".err-area").html(err);    
+                return false;
+            }
+            
+           });
+        }
+
   </script>
 </body>
 

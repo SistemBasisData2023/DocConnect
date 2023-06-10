@@ -175,6 +175,24 @@ const doctorControl = {
       res.status(500).send('Server error');
 
     }
+  },
+
+  doctorByDepartmentId: async (req,res) => {
+    const { dept_id } = req.params;
+    const query = await pool.query(`select * from doctors where department_id = $1`, [dept_id]);
+    const result = {};
+    result[`message`] = `OK`;
+    result[`data`] = query.rows;
+    res.status(200).json(result);
+  },
+
+  scheduleByDoctorId: async (req, res) => {
+    const { doctor_id} = req.params;
+    const query = await pool.query(`select * from schedule s where s.doctor_id = $1`, [doctor_id]);
+    const result = {};
+    result[`message`] = `OK`;
+    result[`data`] = query.rows;
+    res.status(200).json(result);
   }
 
 };

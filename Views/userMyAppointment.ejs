@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="./css/main.css" rel="stylesheet" />
+  <link href="/css/main.css" rel="stylesheet" />
   <title>Template Lama</title>
   <script src="https://kit.fontawesome.com/7044071874.js" crossorigin="anonymous"></script>
   <!-- Bootstrap CSS -->
@@ -33,7 +33,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-white fixed-top" style="border-bottom: 2px solid #4757ff; color: #4757ff;">
     <div class="container" style="margin-left: 50px;">
       <a class="navbar-brand" style="border-color: #ffffff00;" href="#">
-        <img src="images/DClogo.png" style="width: 200px;">
+        <img src="/images/DClogo.png" style="width: 200px;">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,11 +42,11 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="#" style="color: #4757ff;">Home</a>
+            <a class="nav-link" style="color: #4757ff;" onclick="home()">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="DocMakeSchedule.html"style="color: #4757ff;">Make Schedule</a>
-          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link" onclick="makeSchedule()" style="color: #4757ff;">Make Schedule</a>
+          </li> -->
         </ul>
       </div>
       <a class="nav-item" style="text-decoration: none;">Hi, name</a>
@@ -60,46 +60,26 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Patient</th>
-                <th scope="col">Day</th>
+                <th scope="col">Specialist</th>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Date</th>
                 <th scope="col">Time</th>
-                <th scope="col">Action</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>monday</td>
-                <td>10 AM</td>
-                <td>
-                    <a href="Doc Review Appointment.html">
-                        <button class="appointmentButton">Review</button>
-                    </a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>monday</td>
-                <td>11 AM</td>
-                <td>
-                    <a href="Doc Review Appointment.html">
-                        <button class="appointmentButton">Review</button>
-                    </a>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry the Bird</td>
-                <td>monday</td>
-                <td>12 AM</td>
-                <td>
-                    <a href="Doc Review Appointment.html">
-                        <button class="appointmentButton">Review</button>
-                    </a>
-                </td>
-              </tr>
+              <% for(var i=0; i < data.length; i++) { %>
+                <tr>
+                  <th scope="row"><%= i+1%></th>
+                  <td><%= data[i].department_name%></td>
+                  <td><%= data[i].doctor_name%></td>
+                  <td><%= data[i].date%></td>
+                  <td><%= data[i].time%></td>
+                  <td>
+                    <button class="appointmentButton"><%= data[i].status%></button>
+                  </td>
+                </tr>
+              <% } %>
             </tbody>
           </table>
     </div>
@@ -116,6 +96,11 @@
     dropdown.onclick = function(){
         dropdown.classList.toggle('active');
     }
+
+    function home(){
+      window.location.href = '/views/user';
+    }
+
   </script>
 </body>
 
