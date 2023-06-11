@@ -176,14 +176,12 @@ This table is used to store departments name and their ID.
 
 - First Report (Click thumbnail below):
 <div align="center">
-<a href="https://youtu.be/ZUChd-FVUlU">
-</a>
+https://youtu.be/ZUChd-FVUlU"
 </div>
 
  - Second Report (Click thumbnail below):
     <div align="center">
-<a href="https://youtu.be/bN1Se6Y4qYA">
-</a>
+"https://youtu.be/bN1Se6Y4qYA"
 </div>
 
  </details>
