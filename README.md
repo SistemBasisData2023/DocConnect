@@ -56,22 +56,24 @@ git clone https://github.com/SistemBasisData2023/DocConnect
 ```
 2. Install the dependencies
 ```sh
-cd backend
 npm install
 ```
 3. Run the server at ```localhost:5000``` on your local browser
 ```sh
 npm run server
 ```
+4. Open ```localhost:5000/views/login``` to proceed to the login page
+
 
 ## Language and Tools
 
 <p float = "left">
-<img alt="Python" src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
-<img alt="Python" src="https://img.shields.io/badge/express.js-%23404d59.svg?style=flat-square&logo=express&logoColor=%2361DAFB">
-<img alt="Python" src="https://img.shields.io/badge/html5-%23E34F26.svg?style=flat-square&logo=html5&logoColor=white" />
-<img alt="Python" src="https://img.shields.io/badge/postgres-%23316192.svg?style=flat-square&logo=postgresql&logoColor=white" />
-<img alt="Python" src="https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=flat-square&logo=tailwind-css&logoColor=white" />
+<img alt="JS" src="https://img.shields.io/badge/-JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black">
+<img alt="express" src="https://img.shields.io/badge/express.js-%23404d59.svg?style=flat-square&logo=express&logoColor=%2361DAFB">
+<img alt="postgres" src="https://img.shields.io/badge/postgres-%23316192.svg?style=flat-square&logo=postgresql&logoColor=white" />
+<img alt="html" src="https://img.shields.io/badge/html5-%23E34F26.svg?style=flat-square&logo=html5&logoColor=white" />
+<img alt="css" src="https://img.shields.io/badge/css3-%231572B6.svg?style=flat-square&logo=css3&logoColor=white" />
+<img alt="bootstrap" src="https://img.shields.io/badge/bootstrap-%238511FA.svg?style=flat-square&logo=bootstrap&logoColor=white" />
 </p>
 
 ## Tables
@@ -158,6 +160,7 @@ This table is used to store departments name and their ID.
  ```Relational Table```
 
   ![Figma Design](https://github.com/skamiliya/DocConnect/blob/1dbc3dbe07003a58df283410ed17c8b5574a0a75/ERD.png) 
+
 </details>
 
 
