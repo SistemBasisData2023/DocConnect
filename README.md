@@ -64,6 +64,9 @@ npm run server
 ```
 4. Open ```localhost:5000/views/login``` to proceed to the login page
 
+## Postman Documentation and Examples
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/24288698/2s93sc5t35) 
+
 
 ## Language and Tools
 
