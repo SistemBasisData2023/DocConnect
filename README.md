@@ -178,6 +178,7 @@ This table is used to store departments name and their ID.
 <div align="center">
 <a href="https://youtu.be/ZUChd-FVUlU">
 </a>
+</div>
 
  - Second Report (Click thumbnail below):
     <div align="center">
