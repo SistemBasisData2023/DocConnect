@@ -175,13 +175,13 @@ This table is used to store departments name and their ID.
   ```Progress Report```
 
 - First Report (Click thumbnail below):
-<div align="center">
-"https://youtu.be/ZUChd-FVUlU"
+    <div align="center">
+https://youtu.be/ZUChd-FVUlU
 </div>
 
  - Second Report (Click thumbnail below):
     <div align="center">
-"https://youtu.be/bN1Se6Y4qYA"
+https://youtu.be/bN1Se6Y4qYA
 </div>
 
  </details>
