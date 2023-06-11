@@ -15,6 +15,7 @@
   <a href="#tables">Tables</a> •
   <a href="#flowchart">Flowchart</a> •
   <a href="#relational-table-and-uml">Relational Table and UML</a> 
+  <a href="#Progress-Report">Progress Report</a> 
 </p>
 
 ![BG](https://github.com/SistemBasisData2023/DocConnect/assets/88538229/1badd467-b4cf-43c3-abf8-0eff6c688cb4)
@@ -165,6 +166,27 @@ This table is used to store departments name and their ID.
   ![Figma Design](https://github.com/skamiliya/DocConnect/blob/1dbc3dbe07003a58df283410ed17c8b5574a0a75/ERD.png) 
 
 </details>
+
+## Progress Report
+
+<details>
+  <summary>Click to view</summary>
+
+  ```Progress Report```
+
+- First Report (Click thumbnail below):
+<div align="center">
+<a href="https://youtu.be/ZUChd-FVUlU">
+</a>
+
+ - Second Report (Click thumbnail below):
+    <div align="center">
+<a href="https://youtu.be/bN1Se6Y4qYA">
+</a>
+</div>
+
+ </details>
+
 
 
 
