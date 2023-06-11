@@ -14,8 +14,8 @@
   <a href="#language-and-tools">Language and Tools</a> •
   <a href="#tables">Tables</a> •
   <a href="#flowchart">Flowchart</a> •
-  <a href="#relational-table-and-uml">Relational Table and UML</a> 
-  <a href="#Progress-Report">Progress Report</a> 
+  <a href="#relational-table-and-uml">Relational Table and UML</a> •
+  <a href="#Progress-Report">Progress Report</a> •
 </p>
 
 ![BG](https://github.com/SistemBasisData2023/DocConnect/assets/88538229/1badd467-b4cf-43c3-abf8-0eff6c688cb4)
